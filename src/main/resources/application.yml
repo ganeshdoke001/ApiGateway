@@ -4,6 +4,7 @@ server:
 spring:
   application:
     name: api-gateway
+    
   cloud:
     gateway:
       routes:
@@ -16,7 +17,7 @@ spring:
           uri: lb://HOTEL-SERVICE
           predicates:
             - Path=/api/hotels/**
-            
+
         - id: RATING-SERVICE
           uri: lb://RATING-SERVICE
           predicates:
@@ -35,3 +36,12 @@ fetch-registry: true
 
 service-url:
 default-zone: http://localhost:8761/eureka
+
+
+okta:
+  oauth2:
+    issuer: https://dev-01141569.okta.com/oauth2/default
+    audience: api://default
+    client-id: 0oae08layeJzE0edN5d7
+    client-secret: g3A4-mnOMoPeUOZ3Dv2srmw2t_ZlM0ykj_jpQzZCPp_sTk-DIiWkeapo05H_V7aP
+    scopes: openid, profile, email, offline_access
